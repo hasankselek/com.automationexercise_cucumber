@@ -1,12 +1,18 @@
 package stepDefinitions;
 
 import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import runners.Runner;
 import utilities.Driver;
 
+import static org.junit.runner.Request.runner;
+
 public class Hooks {
+
+
 
     @After
     public void tearDown(Scenario scenario){
@@ -18,4 +24,7 @@ public class Hooks {
     }
 
 
+
 }
+
+

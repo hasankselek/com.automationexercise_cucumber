@@ -8,6 +8,7 @@ import java.util.Properties;
 public class ConfigReader {
     private static Properties properties;
 
+
     static {
         String path="configuration.properties";
         try {

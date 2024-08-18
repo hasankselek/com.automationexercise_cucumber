@@ -13,16 +13,27 @@ public class LoginPage {
     }
 
     @FindBy(xpath = "//input[@placeholder='Name']")
-    public WebElement name;
+    public WebElement nameBox;
 
     @FindBy(xpath = "//input[@data-qa='signup-email']")
-    public WebElement email;
+    public WebElement signupEmailBox;
+
+    @FindBy(xpath = "//input[@data-qa='login-email']")
+    public WebElement loginEmailBox;
+
+    @FindBy(xpath = "//input[@placeholder='Password']")
+    public WebElement passwordBox;
 
 
     public void fillNewUserSignup(String nameText, String emailText){
 
-        name.sendKeys(ConfigReader.getProperty(nameText));
-        email.sendKeys(ConfigReader.getProperty(emailText));
+        nameBox.sendKeys(ConfigReader.getProperty(nameText));
+        signupEmailBox.sendKeys(ConfigReader.getProperty(emailText));
 
+    }
+
+    public void login(String correct_email, String correct_password){
+        loginEmailBox.sendKeys(ConfigReader.getProperty(correct_email));
+        passwordBox.sendKeys(ConfigReader.getProperty(correct_password));
     }
 }

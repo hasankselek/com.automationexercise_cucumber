@@ -1,6 +1,7 @@
 package utilities;
 
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import java.io.File;
@@ -46,6 +47,8 @@ public class ReusableMethods {
         WebElement webElement = Driver.getDriver().findElement(By.xpath("//*[text()='"+elementText +"']"));
         assertTrue(webElement.isDisplayed());
     }
+
+
 
     public static List<String> stringListesineDonustur(List<WebElement> webelementListesi) {
 
@@ -178,6 +181,37 @@ public class ReusableMethods {
         // save the screenshot to the path given
         FileUtils.copyFile(source, finalDestination);
         return target;
+    }
+
+    public static void verifyElementDisplayed(By by) {
+        try {
+            Assert.assertTrue("Element not visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+            Assert.fail("Element not found: " + by);
+
+        }
+    }
+
+    public static void verifyElementNotDisplayed(By by) {
+        try {
+            Assert.assertFalse("Element should not be visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+
+        }
+    }
+
+
+
+    public static void verifyElementDisplayed(WebElement element) {
+        try {
+            Assert.assertTrue("Element not visible: " + element, element.isDisplayed());
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+            Assert.fail("Element not found: " + element);
+
+        }
     }
 
 
