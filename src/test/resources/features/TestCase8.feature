@@ -1,6 +1,6 @@
 Feature:Verify All Products and product detail page
 
-  @ab
+
   Scenario: Verify All Products and product detail page
 
     * Navigate to "url"
@@ -10,4 +10,4 @@ Feature:Verify All Products and product detail page
     * The products list is visible
     * Click on View Product of first product
     * User is landed to product detail page
-    * Verify that detail detail is visible: "product name" "category, price" "availability" "condition" "brand"
+    * Verify that detail detail is visible: "Blue Top" "Tops" "500" "In Stock" "New" "Polo"

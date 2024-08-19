@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 import static org.junit.Assert.*;
 
@@ -16,7 +17,7 @@ public class HomePage {
     }
 
     @FindBy(xpath = "//*[text()=' Signup / Login']")
-    public WebElement signupLoginButton;
+    private WebElement signupLoginButton;
 
     @FindBy(xpath = "//img[@alt='Website for automation practice']")
     public WebElement websiteLogo;
@@ -24,8 +25,11 @@ public class HomePage {
     @FindBy(xpath = "//h2[normalize-space()='Subscription']")
     public WebElement subscriptionLogo;
 
-    @FindBy(xpath = "//a[@href='/products']")
-    private WebElement productsButton;
+    @FindBy(id = "susbscribe_email")
+    private WebElement emailBox;
+
+    @FindBy(id = "subscribe")
+    private WebElement subscribeButton;
 
     public void openHomePage(String url){
 
@@ -33,6 +37,7 @@ public class HomePage {
     }
 
     public void verifyPage(){
+
         assertTrue(Driver.getDriver().getCurrentUrl().contains(ConfigReader.getProperty("url")));
     }
 
@@ -40,7 +45,16 @@ public class HomePage {
         assertEquals(Driver.getDriver().getCurrentUrl(),ConfigReader.getProperty(url));
     }
 
-    public WebElement getProductsButton() {
-        return productsButton;
+    public void fillEmailboxAndSearch(String email){
+        emailBox.sendKeys(ConfigReader.getProperty(email));
+        ReusableMethods.bekle(2);
+        subscribeButton.click();
+
     }
+
+
+
+
+
+
 }

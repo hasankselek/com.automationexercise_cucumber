@@ -24,4 +24,11 @@ public class HomepageStepDefs {
 
         homePage.verifyPage();
     }
+
+    @Given("Enter {string} in input and click arrow button")
+    public void enter_in_input_and_click_arrow_button(String email) {
+
+        homePage.fillEmailboxAndSearch(email);
+
+    }
 }

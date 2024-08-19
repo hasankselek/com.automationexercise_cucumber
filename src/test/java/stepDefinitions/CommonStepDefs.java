@@ -37,6 +37,7 @@ public class CommonStepDefs {
 
     @Given("Verify success message {string} is visible")
     public void verify_success_message_is_visible(String successMessage) {
+        ReusableMethods.bekle(1);
         ReusableMethods.verifyElement(successMessage);
 
     }
@@ -62,4 +63,6 @@ public class CommonStepDefs {
         ReusableMethods.verifyElementDisplayed(homePage.websiteLogo);
         ReusableMethods.verifyElement(text);
     }
+
+
 }
