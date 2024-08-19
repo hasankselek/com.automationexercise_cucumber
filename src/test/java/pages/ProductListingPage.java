@@ -2,6 +2,7 @@ package pages;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
@@ -16,6 +17,8 @@ public class ProductListingPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
+    Actions action = new Actions(Driver.getDriver());
+
     @FindBy(xpath = "//div[@class='features_items']//div[@class='col-sm-4']")
     private List<WebElement> productsList;
 
@@ -27,6 +30,17 @@ public class ProductListingPage {
 
     @FindBy(id = "submit_search")
     private WebElement searchButton;
+
+    @FindBy(xpath = "(//img[@alt='ecommerce website products'])[1]")
+    private WebElement firstProductImage;
+
+    @FindBy(xpath = "(//img[@alt='ecommerce website products'])[2]")
+    private WebElement secondProductImage;
+
+    @FindBy(xpath = "(//a[contains(text(),'Add to cart')])")
+    private List<WebElement> addToCartButtonList;
+
+
 
     public void allProductsVisible(){
         for (int i = 0; i < productsList.size(); i++) {
@@ -49,5 +63,11 @@ public class ProductListingPage {
     public void searchProduct(String searchText){
         searchProductBox.sendKeys(searchText);
         searchButton.click();
+    }
+
+    public void addTwoProductsCart(){
+
+        action.moveToElement(firstProductImage).click(addToCartButtonList.get(0))
+
     }
 }
